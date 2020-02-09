@@ -1,0 +1,46 @@
+.hotel-name {
+    color: #17317f;
+    font-size: 1.4em; 
+    margin: 0 
+}
+
+.listing .btn-primary {
+    background-color: #fedc07; 
+    border-bottom: 3px solid #ebc200; 
+    border-radius: 0.2em; color: #17317f;
+    border-color: #ebc200;
+    line-height: 1.2;
+}
+
+span.price { font-size: 2em;}
+
+.left-sidebar li { 
+    padding: 0; 
+    border-bottom: 2px solid #17317f;
+    ;
+}
+
+.left-sidebar li a { display: block; padding: 1em;}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 0.2em;
+    z-index: 20;   
+}
+
+.list-group-item.active {
+    background-color: #17317f;
+    border: none;
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+}
+
+.overview-title {
+    color: #17317f;
+}

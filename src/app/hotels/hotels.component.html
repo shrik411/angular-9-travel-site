@@ -1,0 +1,85 @@
+<div class="row" style="padding-top: 40px;">
+    <!-- get the loction filter working -->
+    <div class="col-md-12 mb-4">
+        <div class="dropdown col-md-6">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Departure Airport
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a  *ngFor="let hotel of hotels" class="dropdown-item"(click)="filterByDeparture(hotel.departing_from)">{{ hotel.departing_from }}</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+        </div>
+    </div>
+    <div class="col-md-3 left-sidebar">
+        <ul class="list-group droptrue">
+            <li class="list-group-item" [ngClass]="{'active' : sortParam == 'name'}">
+                <a (click)="sort('name')">sort <strong>alphabetically</strong></a>
+            </li>            
+            <li class="list-group-item" [ngClass]="{'active' : sortParam == 'price'}">
+                <a (click)="sort('price')">sort by <strong>price</strong></a>
+            </li>            
+            <li class="list-group-item" [ngClass]="{'active' : sortParam == 'ratings'}">
+                <a (click)="sort('ratings')">sort by star <strong>rating</strong></a>
+            </li>
+            <li class="list-group-item">
+                <a (click)="filterByDeparture('East Midlands')">Departure Date</a>
+            </li>            
+            <li class="list-group-item">
+                <a (click)="clear()">Clear Filters</a>
+            </li>
+            
+        </ul>
+    </div>
+    
+    <div class="col-md-9 listing">
+        <div class="card no-gutters mb-4 border-0" *ngFor="let hotel of filteredHotels">
+            <div class="row no-gutters">
+                <div class="col-md-7" style="background: #868e96;">
+                    <img src="assets/img/{{hotel.img}}" class="card-img-top h-100" alt="{{hotel.name}}">
+                    <div data-toggle="collapse" class="overlay" [attr.data-target]="'#collapseThree'+ hotel.id">
+                        <strong>Read more</strong> about this hotel >
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="card-body">
+                        <h5 class="card-title hotel-name">{{hotel.name}}</h5>
+                        <p class="text-secondary small">{{hotel.city}}, {{hotel.state}}</p>
+                        <div>
+                            <span *ngFor="let star of [1,2,3,4,5]">
+                                <span *ngIf="hotel.ratings >= star">
+                                    <img src="assets/img/star.png" class="star" />
+                                </span>
+                            </span>
+                        </div>
+                        <p class="card-text">
+                            <span>
+                                <b>{{ hotel.persons.adults}}</b> Adults,
+                                <b>{{ hotel.persons.childrens}}</b> Children,
+                                <b>{{ hotel.persons.infant}}</b> Infant,
+                            </span>
+                            <br/>
+                            <span><b>{{ hotel.start_date | date: 'd MMMM y' }}</b> for <b>{{ hotel.duration }} {{ hotel.duration_in}}</b></span><br/>
+                            <span>departing from: <b>{{ hotel.departing_from}}</b></span>
+                        </p>
+                        <a href="#" class="btn btn-primary btn-block">
+                            <span style="display: block;"><strong>Book now</strong></span>
+                            <span class="price"><strong>{{hotel.price | currency:'GBP'}}</strong></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 overview">
+                    <div class="container panel-collapse collapse" [id]="'collapseThree'+ hotel.id">
+                        <p class="overview-title"><strong>Overview</strong></p>
+                        {{hotel.overview}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="mb-5"></p>
