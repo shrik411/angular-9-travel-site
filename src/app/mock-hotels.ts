@@ -42,7 +42,7 @@ export const HOTELS: Hotel[] = [
     },
     {
         id: 4,
-        name: 'las piramides resort',
+        name: 'Las Piramides Resort',
         city: 'Costa Adeje',
         state: 'Tenerife',
         ratings: 4,

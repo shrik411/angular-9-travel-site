@@ -1,19 +1,35 @@
-<div class="row" style="padding-top: 40px;">
-    <!-- get the loction filter working -->
-    <div class="col-md-12 mb-4">
-        <div class="dropdown col-md-6">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select Departure Airport
+<div class="search-bar pt-5 mb-4">
+    <div class="row">
+        <div class="col-lg-3 d-flex align-items-center form-group">
+
+        </div>
+        <div class="col-lg-4 d-flex align-items-center form-group">
+            <!-- <input type="text" name="search" placeholder="What are you searching for?" class="form-control border-0 shadow-0"> -->
+            <button class="btn form-control btn-form-control bs-placeholder" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Departure Airport
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a  *ngFor="let hotel of hotels" class="dropdown-item"(click)="filterByDeparture(hotel.departing_from)">{{ hotel.departing_from }}</a>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+            <a  *ngFor="let hotel of hotels" class="dropdown-item"(click)="filterByDeparture(hotel.departing_from)">{{ hotel.departing_from }}</a>
             </div>
         </div>
-        <div class="col-md-6">
-            <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker">
+        <div class="col-lg-3 d-flex align-items-center form-group">
+            <div class="input-label-absolute input-label-absolute-right w-100">
+                <input [matDatepicker]="myDatepicker" placeholder="Select date" class="form-control" (dateChange)="getSelecteDate($event)">
+            </div>
+            <div class="input-label-absolute calendar-label-absolute-right">
+                <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker> 
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button (click)="clear()" class="btn btn-primary btn-custom btn-block rounded-xl">Clear Filters</button>
         </div>
     </div>
-    <div class="col-md-3 left-sidebar">
+</div>
+
+<div class="row mt-4">
+    <!-- get the loction filter working -->
+    <div class="col-md-3 left-sidebar mb-4">
         <ul class="list-group droptrue">
             <li class="list-group-item" [ngClass]="{'active' : sortParam == 'name'}">
                 <a (click)="sort('name')">sort <strong>alphabetically</strong></a>
@@ -24,13 +40,6 @@
             <li class="list-group-item" [ngClass]="{'active' : sortParam == 'ratings'}">
                 <a (click)="sort('ratings')">sort by star <strong>rating</strong></a>
             </li>
-            <li class="list-group-item">
-                <a (click)="filterByDeparture('East Midlands')">Departure Date</a>
-            </li>            
-            <li class="list-group-item">
-                <a (click)="clear()">Clear Filters</a>
-            </li>
-            
         </ul>
     </div>
     
@@ -55,16 +64,15 @@
                                 </span>
                             </span>
                         </div>
-                        <p class="card-text">
-                            <span>
+                        <div class="card-text mb-4">
+                            <div>
                                 <b>{{ hotel.persons.adults}}</b> Adults,
                                 <b>{{ hotel.persons.childrens}}</b> Children,
                                 <b>{{ hotel.persons.infant}}</b> Infant,
-                            </span>
-                            <br/>
+                            </div>
                             <span><b>{{ hotel.start_date | date: 'd MMMM y' }}</b> for <b>{{ hotel.duration }} {{ hotel.duration_in}}</b></span><br/>
-                            <span>departing from: <b>{{ hotel.departing_from}}</b></span>
-                        </p>
+                            <span>Departing from: <b>{{ hotel.departing_from}}</b></span>
+                        </div>
                         <a href="#" class="btn btn-primary btn-block">
                             <span style="display: block;"><strong>Book now</strong></span>
                             <span class="price"><strong>{{hotel.price | currency:'GBP'}}</strong></span>

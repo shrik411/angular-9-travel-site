@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { HotelsComponent } from './hotels/hotels.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TestComponent } from './test/test.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const appRoutes: Routes = [
   {
@@ -27,8 +30,11 @@ const appRoutes: Routes = [
       appRoutes,
       // { enableTracing: true }
     ),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

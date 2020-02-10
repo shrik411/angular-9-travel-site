@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HOTELS } from '../mock-hotels';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
-
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-hotels',
@@ -12,7 +11,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class HotelsComponent implements OnInit {
   hotels = HOTELS;
   filteredHotels = HOTELS;
-  sortParam = '';
+  sortParam = 'price';
   show:boolean = false;
   
   constructor(private _router: Router, private route: ActivatedRoute) { }
@@ -22,7 +21,7 @@ export class HotelsComponent implements OnInit {
     // subscribe to the queryparam
     this.route.queryParams.subscribe(queryParams => {
       // do something with the query params
-      let key = this.sortParam = (queryParams.sort) ? queryParams.sort : '';
+      let key = this.sortParam = (queryParams.sort) ? queryParams.sort : 'price';
       this.filteredHotels = this.hotels;
 
       if (queryParams.departing_from) {
@@ -61,8 +60,9 @@ export class HotelsComponent implements OnInit {
     this._router.navigate(['/hotels'], {})
   }
 
-  showDescription = (id) => {
-
+  getSelecteDate = (event: MatDatepickerInputEvent<Date>) => {
+    let selected = new Date(event.value);
+    alert(selected.toISOString().slice(0,10).split('-').reverse().join('/') );
   }
 
 }

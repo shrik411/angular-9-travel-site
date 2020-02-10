@@ -4,3 +4,5 @@ body {
     background-repeat: repeat-x;
     font-family: 1.4em/1.5em BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif 
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
