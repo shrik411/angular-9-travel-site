@@ -66,9 +66,9 @@
                         </div>
                         <div class="card-text mb-4">
                             <div>
-                                <b>{{ hotel.persons.adults}}</b> Adults,
-                                <b>{{ hotel.persons.childrens}}</b> Children,
-                                <b>{{ hotel.persons.infant}}</b> Infant,
+                                <span><b>{{ hotel.persons.adults}}</b> Adults</span>
+                                <span>, <b>{{ hotel.persons.childrens}}</b> Children</span>
+                                <span *ngIf="hotel.persons.infant">, <b>{{ hotel.persons.infant}}</b> Infant</span>
                             </div>
                             <span><b>{{ hotel.start_date | date: 'd MMMM y' }}</b> for <b>{{ hotel.duration }} {{ hotel.duration_in}}</b></span><br/>
                             <span>Departing from: <b>{{ hotel.departing_from}}</b></span>
