@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  @Input() filteredHotels: any;
-  readMore: boolean = false;
-  
+  @Input() hotel: any;
+  showMore: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

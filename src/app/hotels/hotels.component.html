@@ -44,7 +44,9 @@
     </div>
     
     <div class="col-md-9 listing">
-        <app-details [filteredHotels]="filteredHotels"></app-details>
+        <div class="card no-gutters mb-4 border-0" *ngFor="let hotel of filteredHotels">
+            <app-details [hotel]="hotel"></app-details>
+        </div>
     </div>
 </div>
 
