@@ -14,7 +14,7 @@
         </div>
         <div class="col-lg-3 d-flex align-items-center form-group">
             <div class="input-label-absolute input-label-absolute-right w-100">
-                <input [matDatepicker]="myDatepicker" placeholder="Select date" class="form-control" (dateChange)="getSelecteDate($event)">
+                <input [matDatepicker]="myDatepicker" placeholder="Select start date" class="form-control" (dateChange)="getSelecteDate($event)">
             </div>
             <div class="input-label-absolute calendar-label-absolute-right">
                 <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
@@ -44,49 +44,7 @@
     </div>
     
     <div class="col-md-9 listing">
-        <div class="card no-gutters mb-4 border-0" *ngFor="let hotel of filteredHotels">
-            <div class="row no-gutters">
-                <div class="col-md-7" style="background: #868e96;">
-                    <img src="assets/img/{{hotel.img}}" class="card-img-top h-100" alt="{{hotel.name}}">
-                    <div data-toggle="collapse" class="overlay" [attr.data-target]="'#collapseThree'+ hotel.id">
-                        <strong>Read more</strong> about this hotel >
-                    </div>
-                </div>
-
-                <div class="col-md-5">
-                    <div class="card-body">
-                        <h5 class="card-title hotel-name">{{hotel.name}}</h5>
-                        <p class="text-secondary small">{{hotel.city}}, {{hotel.state}}</p>
-                        <div>
-                            <span *ngFor="let star of [1,2,3,4,5]">
-                                <span *ngIf="hotel.ratings >= star">
-                                    <img src="assets/img/star.png" class="star" />
-                                </span>
-                            </span>
-                        </div>
-                        <div class="card-text mb-4">
-                            <div>
-                                <span><b>{{ hotel.persons.adults}}</b> Adults</span>
-                                <span>, <b>{{ hotel.persons.childrens}}</b> Children</span>
-                                <span *ngIf="hotel.persons.infant">, <b>{{ hotel.persons.infant}}</b> Infant</span>
-                            </div>
-                            <span><b>{{ hotel.start_date | date: 'd MMMM y' }}</b> for <b>{{ hotel.duration }} {{ hotel.duration_in}}</b></span><br/>
-                            <span>Departing from: <b>{{ hotel.departing_from}}</b></span>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-block">
-                            <span style="display: block;"><strong>Book now</strong></span>
-                            <span class="price"><strong>{{hotel.price | currency:'GBP'}}</strong></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-12 overview">
-                    <div class="container panel-collapse collapse" [id]="'collapseThree'+ hotel.id">
-                        <p class="overview-title"><strong>Overview</strong></p>
-                        {{hotel.overview}}
-                    </div>
-                </div>
-            </div>
-        </div>
+        <app-details [filteredHotels]="filteredHotels"></app-details>
     </div>
 </div>
 

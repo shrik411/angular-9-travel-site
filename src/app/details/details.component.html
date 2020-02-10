@@ -1,0 +1,55 @@
+<div class="card no-gutters mb-4 border-0" *ngFor="let hotel of filteredHotels">
+    <div class="row no-gutters">
+        <div class="col-md-7" style="background: #868e96;">
+            <img src="assets/img/{{hotel.img}}" class="card-img-top h-100" alt="{{hotel.name}}">
+            <div data-toggle="collapse" class="overlay read-more-text" [attr.data-target]="'#collapseThree'+ hotel.id">
+                <span *ngIf="showMore">
+                    <strong>Read less</strong>
+                </span>
+                <span *ngIf="!showMore">
+                    <strong>Read more</strong>
+                </span>
+                about this hotel 
+                <span *ngIf="showMore">
+                    <strong>v</strong>
+                </span>
+                <span *ngIf="!showMore">
+                    <strong>></strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card-body">
+                <h5 class="card-title hotel-name">{{hotel.name}}</h5>
+                <p class="text-secondary small">{{hotel.city}}, {{hotel.state}}</p>
+                <div>
+                    <span *ngFor="let star of [1,2,3,4,5]">
+                        <span *ngIf="hotel.ratings >= star">
+                            <img src="assets/img/star.png" class="star" />
+                        </span>
+                    </span>
+                </div>
+                <div class="card-text mb-4">
+                    <div>
+                        <span><b>{{ hotel.persons.adults}}</b> Adults</span>
+                        <span>, <b>{{ hotel.persons.childrens}}</b> Children</span>
+                        <span *ngIf="hotel.persons.infant">, <b>{{ hotel.persons.infant}}</b> Infant</span>
+                    </div>
+                    <span><b>{{ hotel.start_date | date: 'd MMMM y' }}</b> for <b>{{ hotel.duration }} {{ hotel.duration_in}}</b></span><br/>
+                    <span>Departing from: <b>{{ hotel.departing_from}}</b></span>
+                </div>
+                <a href="#" class="btn btn-primary btn-block">
+                    <span style="display: block;"><strong>Book now</strong></span>
+                    <span class="price"><strong>{{hotel.price | currency:'GBP'}}</strong></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-12 overview">
+            <div class="container panel-collapse collapse" [id]="'collapseThree'+ hotel.id">
+                <p class="overview-title"><strong>Overview</strong></p>
+                {{hotel.overview}}
+            </div>
+        </div>
+    </div>
+</div>

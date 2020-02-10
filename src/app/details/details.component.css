@@ -1,0 +1,46 @@
+.star {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-custom {
+    background-color: #fedc07;
+    border-color: #ebc200;
+    color: #17317f;
+}
+
+.overview-title {
+    color: #17317f;
+}
+
+.hotel-name {
+    color: #17317f;
+    font-size: 1.4em; 
+    margin: 0 
+}
+
+span.price { font-size: 2em;}
+
+.btn-primary {
+    background-color: #fedc07; 
+    border-bottom: 3px solid #ebc200; 
+    border-radius: 0.2em; color: #17317f;
+    border-color: #ebc200;
+    line-height: 1.2;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 0.2em;
+    z-index: 20;   
+}
+
+
+.read-more-text {
+    font-size: 0.9em;
+    padding: 0.2em 1em;
+    color: #17317f;
+}

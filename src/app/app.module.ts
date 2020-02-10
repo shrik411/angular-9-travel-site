@@ -8,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DetailsComponent } from './details/details.component';
 
 const appRoutes: Routes = [
   {
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HotelsComponent,
-    TestComponent
+    TestComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

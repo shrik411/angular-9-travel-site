@@ -50,6 +50,8 @@ export class HotelsComponent implements OnInit {
       else if (a[key] > b[key]) return 1;
       else return 0;
     });
+
+    if (key == "ratings") this.filteredHotels.reverse();
   }
   
   sort = (key: string) => {
