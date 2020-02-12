@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Visiting listing page
+For the listing page, please visit /hotels ex:- localhost:4200/hotels if you app is running on local and port is 4200.
+
+## Extras
+This app is simple search and filter from the static data, currently reading the data from file and can be changed to get the data from thirt party.
+
+On listing page, user can search hotel available after his departure date and location.
+User can sort hotel by  name, ratings and price
